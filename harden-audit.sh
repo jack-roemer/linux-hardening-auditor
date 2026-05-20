@@ -18,13 +18,17 @@ RESULTS_FILE="$(mktemp)"
 trap 'rm -f "$RESULTS_FILE"' EXIT
 
 load_checks() {
+
     local check
+
     for check in "$BASE_DIR"/checks/*.sh; do
         source "$check"
     done
+
 }
 
 run_checks() {
+
   check_ssh_root_login
   check_ssh_password_auth
   check_sudoers_permissions
@@ -34,6 +38,7 @@ run_checks() {
   check_umask
   check_docker_socket
   check_cron_permissions
+  
 }
 
 load_checks

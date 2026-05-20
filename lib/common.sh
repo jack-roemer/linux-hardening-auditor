@@ -9,13 +9,13 @@ err() {
 
 command_exists() {
 
-  command -v "$1" >/dev/null 2>&1 # uses command -v for better reliability across shells
+  command -v "$1" >/dev/null 2>&1 
 
 }
 
 is_root() {
 
-  [[ "${EUID:-$(id -u)}" -eq 0 ]] # $(id -u) ensures compatibility in environments where EUID might not be exported
+  [[ "${EUID:-$(id -u)}" -eq 0 ]] # $(id -u) ensures compatibility in environments where EUID might not be set
 
 }
 
@@ -30,7 +30,6 @@ hk_path() {
 
   else
     printf '%s\n' "$path"
-
   fi
 
 }

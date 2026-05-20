@@ -68,7 +68,6 @@ exit_with_audit_status() {
 
     if jq -e 'select(.status == "fail" or .status == "error")' "$RESULTS_FILE" >/dev/null; then
     exit 1
-
     fi
 
     exit 0

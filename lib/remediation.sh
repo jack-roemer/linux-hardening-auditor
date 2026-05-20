@@ -5,7 +5,6 @@ require_root_for_fix() {
   if [[ "$FIX" -eq 1 ]] && ! is_root; then
     echo "--fix requires root" >&2
     exit 4
-
   fi
 
 }
@@ -17,13 +16,12 @@ backup_file() {
   [[ -z "$BACKUP_DIR" ]] && return 0
   [[ -e "$file" ]] || return 0
 
-  local rel="${file#/}"
-  local dest="$BACKUP_DIR/$rel.$(date -u +%Y%m%dT%H%M%SZ)"
+  local rel = "${file#/}"
+  local dest = "$BACKUP_DIR/$rel.$(date -u +%Y%m%dT%H%M%SZ)"
 
   if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "[dry-run] backup $file -> $dest" >&2
     return 0
-
   fi
 
   mkdir -p "$(dirname "$dest")"
@@ -58,7 +56,6 @@ ensure_kv_line() {
   if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "[dry-run] ensure $key $value in $file" >&2
     return 0
-
   fi
 
   mkdir -p "$(dirname "$file")"
@@ -70,7 +67,6 @@ ensure_kv_line() {
 
   else
     printf '%s %s\n' "$key" "$value" >> "$file"
-
   fi
   
 }
