@@ -16,8 +16,8 @@ backup_file() {
   [[ -z "$BACKUP_DIR" ]] && return 0
   [[ -e "$file" ]] || return 0
 
-  local rel = "${file#/}"
-  local dest = "$BACKUP_DIR/$rel.$(date -u +%Y%m%dT%H%M%SZ)"
+  local rel="${file#/}"
+  local dest="$BACKUP_DIR/$rel.$(date -u +%Y%m%dT%H%M%SZ)"
 
   if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "[dry-run] backup $file -> $dest" >&2
@@ -32,13 +32,11 @@ backup_file() {
 apply_cmd() {
 
   local description="$1"
-
   shift
 
   if [[ "$DRY_RUN" -eq 1 ]]; then
     echo "[dry-run] $description: $*" >&2
     return 0
-
   fi
 
   "$@"
@@ -64,7 +62,6 @@ ensure_kv_line() {
   if grep -Eq "^[[:space:]]*#?[[:space:]]*$key[[:space:]]+" "$file"; then
     sed -i.bak -E "s|^[[:space:]]*#?[[:space:]]*$key[[:space:]].*|$key $value|" "$file"
     rm -f "$file.bak"
-
   else
     printf '%s %s\n' "$key" "$value" >> "$file"
   fi
