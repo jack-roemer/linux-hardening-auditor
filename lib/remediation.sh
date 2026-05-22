@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 require_root_for_fix() {
-  if [[ "$FIX" -eq 1 ]] && ! is_root; then
+  if [[ "$FIX" -eq 1 && -z "${HK_ROOT:-}" ]] && ! is_root; then
     echo "--fix requires root" >&2
     exit 4
   fi
