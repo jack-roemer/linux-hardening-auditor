@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_sudoers_permissions() {
-  
   local id="SUDO-001"
   should_run_check "$id" || return 0
 
@@ -50,5 +49,4 @@ check_sudoers_permissions() {
     "$evidence" \
     "Ensure /etc/sudoers is owned by root and mode 0440; validate syntax with visudo -c." \
     true "$changed"
-
 }

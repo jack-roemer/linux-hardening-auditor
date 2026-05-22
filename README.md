@@ -245,3 +245,16 @@ A good pull request should include:
 - Firewall checks do not prove that the policy is strong; they only detect common firewall tooling state.
 - SSH remediation uses a drop-in file and then validates effective behavior, but local include ordering can still require administrator review.
 - Docker checks focus on socket exposure and obvious TCP API exposure, not full container runtime security.
+
+## Roadmap
+
+- Add `--list-checks`.
+- Add severity filtering such as `--severity high`.
+- Add `--fail-on medium` for CI/CD usage.
+- Add an optional HTML report.
+- Add distro-specific profiles for Ubuntu, Debian, Rocky, AlmaLinux, and Fedora.
+- Add a demo lab with intentionally weak configurations.
+
+## License
+
+MIT License. See `LICENSE` if included in your repository.

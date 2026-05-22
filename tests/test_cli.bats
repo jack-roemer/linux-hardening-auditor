@@ -5,12 +5,12 @@ setup() {
 }
 
 @test "help output includes usage" {
-  run "$PROJECT_ROOT/harden-audit.sh" --help
+  run bash "$PROJECT_ROOT/harden-audit.sh" --help
   [ "$status" -eq 0 ]
   [[ "$output" == *"Usage:"* ]]
 }
 
 @test "invalid format returns CLI error" {
-  run "$PROJECT_ROOT/harden-audit.sh" --format xml
+  run bash "$PROJECT_ROOT/harden-audit.sh" --format xml
   [ "$status" -eq 2 ]
 }

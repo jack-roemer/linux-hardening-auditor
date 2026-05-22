@@ -21,7 +21,7 @@ FAKE_SSHD
 }
 
 @test "SSH root login check fails when effective config allows root" {
-  run "$PROJECT_ROOT/harden-audit.sh" --check SSH-001 --format json
+  run bash "$PROJECT_ROOT/harden-audit.sh" --check SSH-001 --format json
   [ "$status" -eq 1 ]
   echo "$output" | jq -e '.results[0].id == "SSH-001"'
   echo "$output" | jq -e '.results[0].status == "fail"'

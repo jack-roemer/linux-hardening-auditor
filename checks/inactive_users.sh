@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
 uid_min() {
-
   awk '/^[[:space:]]*UID_MIN/ {print $2; found=1; exit} END {if (!found) print 1000}' "$(hk_path /etc/login.defs)" 2>/dev/null || echo 1000
-
 }
 
 check_inactive_users() {
-
   local id="USER-001"
   should_run_check "$id" || return 0
 
@@ -61,5 +58,4 @@ check_inactive_users() {
       "No action required." \
       false false
   fi
-
 }

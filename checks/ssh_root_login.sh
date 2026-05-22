@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 sshd_effective_value() {
-  
   local key="$1"
   local value
 
@@ -12,11 +11,9 @@ sshd_effective_value() {
   value="$(sshd -T -C user=root,host=localhost,addr=127.0.0.1 2>/dev/null | awk -v k="$key" '$1 == k {print $2; exit}')"
   [[ -n "$value" ]] || return 1
   printf '%s\n' "$value"
-
 }
 
 fix_sshd_option() {
-
   local key="$1"
   local value="$2"
   local dropin
@@ -40,11 +37,9 @@ fix_sshd_option() {
   local effective
   effective="$(sshd_effective_value "$(tr '[:upper:]' '[:lower:]' <<< "$key")")"
   [[ "$effective" == "$value" ]]
-
 }
 
 check_ssh_root_login() {
-
   local id="SSH-001"
   should_run_check "$id" || return 0
 
@@ -84,5 +79,4 @@ check_ssh_root_login() {
         true "$changed"
       ;;
   esac
-
 }

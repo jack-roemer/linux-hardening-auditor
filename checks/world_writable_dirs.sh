@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_world_writable_dirs() {
-  
   local id="FS-001"
   should_run_check "$id" || return 0
 
@@ -45,5 +44,4 @@ check_world_writable_dirs() {
     "$findings" \
     "Set the sticky bit on legitimate shared directories or remove world-write permission where not required." \
     true "$changed"
-
 }

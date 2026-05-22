@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_docker_socket() {
-  
   local id="DOCKER-001"
   should_run_check "$id" || return 0
 
@@ -56,5 +55,4 @@ check_docker_socket() {
     "$(IFS='; '; echo "${findings[*]}")" \
     "Restrict socket permissions, avoid mounting docker.sock into containers, and secure any Docker TCP API with TLS." \
     true "$changed"
-
 }

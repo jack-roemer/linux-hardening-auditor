@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 emit_result() {
-
   local id="$1"
   local title="$2"
   local risk="$3"
@@ -30,11 +29,9 @@ emit_result() {
       fix_available: $fix_available,
       changed: $changed
     }' >> "$RESULTS_FILE"
-
 }
 
 render_output() {
-
   local format="$1"
 
   case "$format" in
@@ -60,15 +57,12 @@ render_output() {
         column -t -s $'\t'
       ;;
   esac
-
 }
 
 exit_with_audit_status() {
-
   if jq -e 'select(.status == "fail" or .status == "error")' "$RESULTS_FILE" >/dev/null; then
     exit 1
   fi
 
   exit 0
-  
 }

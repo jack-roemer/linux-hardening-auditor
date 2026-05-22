@@ -9,11 +9,11 @@ setup() {
 }
 
 @test "umask remediation is idempotent" {
-  run "$PROJECT_ROOT/harden-audit.sh" --check UMASK-001 --fix --root "$ROOT" --format json
+  run bash "$PROJECT_ROOT/harden-audit.sh" --check UMASK-001 --fix --root "$ROOT" --format json
   [ "$status" -eq 1 ] || [ "$status" -eq 0 ]
   grep -q '^UMASK 027$' "$ROOT/etc/login.defs"
 
-  run "$PROJECT_ROOT/harden-audit.sh" --check UMASK-001 --fix --root "$ROOT" --format json
+  run bash "$PROJECT_ROOT/harden-audit.sh" --check UMASK-001 --fix --root "$ROOT" --format json
   [ "$status" -eq 0 ]
   [ "$(grep -c '^UMASK 027$' "$ROOT/etc/login.defs")" -eq 1 ]
 }

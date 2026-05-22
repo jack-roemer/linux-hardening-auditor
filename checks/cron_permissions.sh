@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_cron_permissions() {
-
   local id="CRON-001"
   should_run_check "$id" || return 0
 
@@ -59,5 +58,4 @@ check_cron_permissions() {
     "$findings" \
     "Remove group/other write permission from system cron files and verify owners." \
     true "$changed"
-    
 }

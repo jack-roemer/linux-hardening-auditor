@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_umask() {
-  
   local id="UMASK-001"
   should_run_check "$id" || return 0
 
@@ -39,5 +38,4 @@ check_umask() {
     "UMASK ${current:-not set}; expected $desired" \
     "Set UMASK $desired in /etc/login.defs and review PAM/shell-specific overrides." \
     true "$changed"
-
 }

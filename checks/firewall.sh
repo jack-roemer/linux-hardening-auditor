@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_firewall() {
-  
   local id="FW-001"
   should_run_check "$id" || return 0
 
@@ -44,5 +43,4 @@ check_firewall() {
     "no active ufw/firewalld/nftables ruleset detected" \
     "Enable a host firewall only after confirming allowed management ports, especially SSH." \
     false false
-
 }

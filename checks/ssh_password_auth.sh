@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 check_ssh_password_auth() {
-  
   local id="SSH-002"
   should_run_check "$id" || return 0
 
@@ -32,5 +31,4 @@ check_ssh_password_auth() {
       "Confirm key-based login and sudo access, then set PasswordAuthentication no." \
       true "$changed"
   fi
-
 }

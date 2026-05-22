@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
 require_root_for_fix() {
-
   if [[ "$FIX" -eq 1 ]] && ! is_root; then
     echo "--fix requires root" >&2
     exit 4
   fi
-
 }
 
 backup_file() {
-
   local file="$1"
 
   [[ -z "$BACKUP_DIR" ]] && return 0
@@ -26,11 +23,9 @@ backup_file() {
 
   mkdir -p "$(dirname "$dest")"
   cp -a -- "$file" "$dest"
-
 }
 
 apply_cmd() {
-
   local description="$1"
   shift
 
@@ -40,11 +35,9 @@ apply_cmd() {
   fi
 
   "$@"
-
 }
 
 ensure_kv_line() {
-
   local file="$1"
   local key="$2"
   local value="$3"
@@ -65,5 +58,4 @@ ensure_kv_line() {
   else
     printf '%s %s\n' "$key" "$value" >> "$file"
   fi
-  
 }
